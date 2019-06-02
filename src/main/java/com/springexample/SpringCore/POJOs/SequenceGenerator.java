@@ -3,6 +3,7 @@ package com.springexample.SpringCore.POJOs;
 import com.springexample.SpringCore.POJOs.prefix.DatePrefixGenerator;
 
 import java.beans.ConstructorProperties;
+import java.util.List;
 
 public class SequenceGenerator {
     private String prefix;
@@ -10,6 +11,7 @@ public class SequenceGenerator {
     private int initial;
     private int counter;
     private DatePrefixGenerator prefixGenerator;
+    private List<Object> listSuffixes;
 
     SequenceGenerator() {}
 
@@ -57,6 +59,10 @@ public class SequenceGenerator {
         this.prefixGenerator = prefixGenerator;
     }
 
+    public void setListSuffixes(List<Object> listSuffixes) {
+        this.listSuffixes = listSuffixes;
+    }
+
     String getPrefix() {
         return prefix;
     }
@@ -87,5 +93,16 @@ public class SequenceGenerator {
         stringBuilder.append(initial + counter++);
         stringBuilder.append(suffix);
         return stringBuilder.toString();
+    }
+
+    public synchronized String getSequenceListGenerator() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(prefix);
+        builder.append(initial + counter++);
+        for(Object suffix : listSuffixes) {
+            builder.append('-');
+            builder.append(suffix);
+        }
+        return builder.toString();
     }
 }

@@ -47,6 +47,11 @@ public class SpringCoreApplication {
 		ApplicationContext dateContext = new GenericXmlApplicationContext("dates.xml");
 		SequenceGenerator dateGenerator = (SequenceGenerator) dateContext.getBean("sequenceGenerator");
 		System.out.println(dateGenerator.getSequenceGenerator());
+		System.out.println();
+
+		ApplicationContext listContext = new GenericXmlApplicationContext("collections.xml");
+		SequenceGenerator listGenerator = (SequenceGenerator) listContext.getBean("seqListGenerator");
+		System.out.println(listGenerator.getSequenceListGenerator());
 
 	}
 

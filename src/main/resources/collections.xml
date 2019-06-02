@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="seqListGenerator" class="com.springexample.SpringCore.POJOs.SequenceGenerator">
+        <property name="prefix" value="44"/>
+        <property name="initial" value="3333"/>
+        <property name="listSuffixes">
+            <list>
+                <value>X</value>
+                <bean class="java.net.URL">
+                    <constructor-arg value="http"/>
+                    <constructor-arg value="www.google.com"/>
+                    <constructor-arg value="/"/>
+                </bean>
+                <null/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
