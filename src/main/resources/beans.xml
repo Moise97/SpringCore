@@ -20,4 +20,19 @@
         </property>
     </bean>
 
+    <bean id="seqGeneratorConstructor" class="com.springexample.SpringCore.POJOs.SequenceGenerator">
+        <constructor-arg>
+            <value>30</value>
+        </constructor-arg>
+        <constructor-arg>
+            <value>A</value>
+        </constructor-arg>
+        <constructor-arg>
+            <value>10000</value>
+        </constructor-arg>
+        <constructor-arg>
+            <value>0</value>
+        </constructor-arg>
+    </bean>
+
 </beans>

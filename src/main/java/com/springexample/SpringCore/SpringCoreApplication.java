@@ -16,6 +16,12 @@ public class SpringCoreApplication {
 		SequenceGenerator generator = (SequenceGenerator) context.getBean("sequenceGenerator");
 		System.out.println(generator.getSequence());
 		System.out.println(generator.getSequence());
+
+		SequenceGenerator seqGenerator = (SequenceGenerator) context.getBean("seqGeneratorConstructor");
+		System.out.println(seqGenerator.getSequence());
+		System.out.println(seqGenerator.getSequence());
+		System.out.println(seqGenerator.getSequence());
+		System.out.println(seqGenerator.getSequence());
 	}
 
 }
