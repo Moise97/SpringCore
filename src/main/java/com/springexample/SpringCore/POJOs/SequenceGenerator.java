@@ -1,5 +1,7 @@
 package com.springexample.SpringCore.POJOs;
 
+import java.beans.ConstructorProperties;
+
 public class SequenceGenerator {
     private String prefix;
     private String suffix;
@@ -7,6 +9,23 @@ public class SequenceGenerator {
     private int counter;
 
     SequenceGenerator() {}
+
+    public SequenceGenerator(String prefix, String suffix) {
+        this.prefix = prefix;
+        this.suffix = suffix;
+    }
+
+    public SequenceGenerator(String prefix, int initial) {
+        this.prefix = prefix;
+        this.initial = initial;
+    }
+
+    // Allow Spring to look up the parameters name from the constructor
+    @ConstructorProperties({"initial", "suffix"})
+    public SequenceGenerator(int initial, String suffix) {
+        this.initial = initial;
+        this.suffix = suffix;
+    }
 
     SequenceGenerator(String prefix, String suffix, int initial, int counter) {
         this.prefix = prefix;

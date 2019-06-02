@@ -35,4 +35,20 @@
         </constructor-arg>
     </bean>
 
+    <!-- With both the <type> and <index> attributes set, Spring is able to find
+     the expected constructor for a bean accurately-->
+    <bean id="sequenceConstructor1" class="com.springexample.SpringCore.POJOs.SequenceGenerator">
+        <constructor-arg type="java.lang.String" index="0" value="30"/>
+        <constructor-arg type="int" index="1" value="100000"/>
+        <property name="suffix" value="A"/>
+    </bean>
+
+    <!-- Another approach to avoid ambiguity in constructor is to specify the constructor
+     parameter names with the <name> attribute -->
+    <bean id="sequenceConstructor2" class="com.springexample.SpringCore.POJOs.SequenceGenerator">
+        <constructor-arg name="initial" value="1000000"/>
+        <constructor-arg name="suffix" value="AA"/>
+        <property name="prefix" value="30"/>
+    </bean>
+
 </beans>

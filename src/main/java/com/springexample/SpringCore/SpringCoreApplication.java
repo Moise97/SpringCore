@@ -18,18 +18,30 @@ public class SpringCoreApplication {
 		SequenceGenerator generator = (SequenceGenerator) context.getBean("sequenceGenerator");
 		System.out.println(generator.getSequence());
 		System.out.println(generator.getSequence());
+		System.out.println();
 
 		SequenceGenerator seqGenerator = (SequenceGenerator) context.getBean("seqGeneratorConstructor");
 		System.out.println(seqGenerator.getSequence());
 		System.out.println(seqGenerator.getSequence());
 		System.out.println(seqGenerator.getSequence());
 		System.out.println(seqGenerator.getSequence());
+		System.out.println();
 
 		ApplicationContext productsContest = new GenericXmlApplicationContext("products.xml");
 		Battery battery = (Battery) productsContest.getBean("batery");
 		Disk disk = (Disk) productsContest.getBean("disk");
 		System.out.println(battery);
 		System.out.println(disk);
+		System.out.println();
+
+		SequenceGenerator generatorSeqConstructor1 = (SequenceGenerator) context.getBean("sequenceConstructor1");
+		System.out.println(generatorSeqConstructor1.getSequence());
+		System.out.println(generatorSeqConstructor1.getSequence());
+		System.out.println();
+
+		SequenceGenerator generatorSeqConstructor2 = (SequenceGenerator) context.getBean("sequenceConstructor2");
+		System.out.println(generatorSeqConstructor2.getSequence());
+		System.out.println(generatorSeqConstructor2.getSequence());
 
 	}
 
