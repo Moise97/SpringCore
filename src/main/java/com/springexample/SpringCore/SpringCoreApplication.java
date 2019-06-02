@@ -42,6 +42,11 @@ public class SpringCoreApplication {
 		SequenceGenerator generatorSeqConstructor2 = (SequenceGenerator) context.getBean("sequenceConstructor2");
 		System.out.println(generatorSeqConstructor2.getSequence());
 		System.out.println(generatorSeqConstructor2.getSequence());
+		System.out.println();
+
+		ApplicationContext dateContext = new GenericXmlApplicationContext("dates.xml");
+		SequenceGenerator dateGenerator = (SequenceGenerator) dateContext.getBean("sequenceGenerator");
+		System.out.println(dateGenerator.getSequenceGenerator());
 
 	}
 
