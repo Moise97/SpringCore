@@ -28,7 +28,7 @@ public class SpringCoreApplication {
 		System.out.println();
 
 		ApplicationContext productsContest = new GenericXmlApplicationContext("products.xml");
-		Battery battery = (Battery) productsContest.getBean("batery");
+		Battery battery = (Battery) productsContest.getBean("battery");
 		Disk disk = (Disk) productsContest.getBean("disk");
 		System.out.println(battery);
 		System.out.println(disk);
