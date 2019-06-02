@@ -1,6 +1,8 @@
 package com.springexample.SpringCore;
 
 import com.springexample.SpringCore.POJOs.SequenceGenerator;
+import com.springexample.SpringCore.POJOs.shop.Battery;
+import com.springexample.SpringCore.POJOs.shop.Disk;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -22,6 +24,13 @@ public class SpringCoreApplication {
 		System.out.println(seqGenerator.getSequence());
 		System.out.println(seqGenerator.getSequence());
 		System.out.println(seqGenerator.getSequence());
+
+		ApplicationContext productsContest = new GenericXmlApplicationContext("products.xml");
+		Battery battery = (Battery) productsContest.getBean("batery");
+		Disk disk = (Disk) productsContest.getBean("disk");
+		System.out.println(battery);
+		System.out.println(disk);
+
 	}
 
 }
