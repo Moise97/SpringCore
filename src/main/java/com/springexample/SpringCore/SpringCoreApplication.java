@@ -52,6 +52,11 @@ public class SpringCoreApplication {
 		ApplicationContext listContext = new GenericXmlApplicationContext("collections.xml");
 		SequenceGenerator listGenerator = (SequenceGenerator) listContext.getBean("seqListGenerator");
 		System.out.println(listGenerator.getSequenceListGenerator());
+		System.out.println();
+
+		ApplicationContext mapContext = new GenericXmlApplicationContext("collections.xml");
+		SequenceGenerator mapGenerator = (SequenceGenerator) mapContext.getBean("seqMapGenerator");
+		System.out.println(mapGenerator.getSequenceMapGenerator());
 
 	}
 

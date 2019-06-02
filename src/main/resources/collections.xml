@@ -21,4 +21,27 @@
         </property>
     </bean>
 
+    <bean id="seqMapGenerator" class="com.springexample.SpringCore.POJOs.SequenceGenerator">
+        <property name="mapSuffixes">
+            <map>
+                <entry>
+                    <key>
+                        <value>type</value>
+                    </key>
+                    <value>M</value>
+                </entry>
+                <entry>
+                    <key>
+                        <value>url</value>
+                    </key>
+                    <bean class="java.net.URL">
+                        <constructor-arg value="http"/>
+                        <constructor-arg value="www.java.com"/>
+                        <constructor-arg value="/"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
 </beans>

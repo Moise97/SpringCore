@@ -4,6 +4,7 @@ import com.springexample.SpringCore.POJOs.prefix.DatePrefixGenerator;
 
 import java.beans.ConstructorProperties;
 import java.util.List;
+import java.util.Map;
 
 public class SequenceGenerator {
     private String prefix;
@@ -12,6 +13,7 @@ public class SequenceGenerator {
     private int counter;
     private DatePrefixGenerator prefixGenerator;
     private List<Object> listSuffixes;
+    private Map<Object, Object> mapSuffixes;
 
     SequenceGenerator() {}
 
@@ -63,6 +65,10 @@ public class SequenceGenerator {
         this.listSuffixes = listSuffixes;
     }
 
+    public void setMapSuffixes(Map<Object, Object> mapSuffixes) {
+        this.mapSuffixes = mapSuffixes;
+    }
+
     String getPrefix() {
         return prefix;
     }
@@ -104,5 +110,18 @@ public class SequenceGenerator {
             builder.append(suffix);
         }
         return builder.toString();
+    }
+
+    public synchronized String getSequenceMapGenerator() {
+        StringBuilder stringMapBuilder = new StringBuilder();
+        stringMapBuilder.append(prefix);
+        stringMapBuilder.append(initial + counter++);
+        for(Map.Entry entry : mapSuffixes.entrySet()) {
+            stringMapBuilder.append('-');
+            stringMapBuilder.append(entry.getKey());
+            stringMapBuilder.append('@');
+            stringMapBuilder.append(entry.getValue());
+        }
+        return stringMapBuilder.toString();
     }
 }
