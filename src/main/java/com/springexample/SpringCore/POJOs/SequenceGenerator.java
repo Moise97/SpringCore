@@ -6,6 +6,8 @@ public class SequenceGenerator {
     private int initial;
     private int counter;
 
+    SequenceGenerator() {}
+
     SequenceGenerator(String prefix, String suffix, int initial, int counter) {
         this.prefix = prefix;
         this.suffix = suffix;
@@ -45,7 +47,7 @@ public class SequenceGenerator {
         return counter;
     }
 
-    synchronized String getSequence() {
+    public synchronized String getSequence() {
         StringBuilder buffer = new StringBuilder();
         buffer.append(prefix);
         buffer.append(initial + counter++);
