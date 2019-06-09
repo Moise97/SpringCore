@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop = "http://www.springframework.org/schema/aop"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+    <aop:config>
+        <aop:pointcut id="loggingOperation" expression=
+                "within(com.springexample.SpringCore.POJOs.calculator.ArithmeticCalculator+) ||
+                within(com.springexample.SpringCore.POJOs.calculator.UnitCalculator+)"/>
+        <aop:aspect id="loggingAspect" ref="calculatorLoggingAspect">
+            <aop:before pointcut-ref="loggingOperation" method="logBefore"/>
+            <aop:after pointcut-ref="loggingOperation" method="logAfter"/>
+            <aop:after-returning pointcut-ref="loggingOperation" returning="result" method="logAfterReturning"/>
+            <aop:after-throwing method="logAfterThrowing" throwing="e" pointcut-ref="loggingOperation"/>
+            <aop:around method="logAround" pointcut-ref="loggingOperation"/>
+        </aop:aspect>
+    </aop:config>
+
+    <bean id="calculatorLoggingAspect" class="com.springexample.SpringCore.POJOs.calculator.CalculatorLoggingAspect">
+    </bean>
+
+    <bean id="arithmeticCalculator" class="com.springexample.SpringCore.POJOs.calculator.ArithmeticCalculatorImpl"/>
+    <bean id="unitCalculator" class="com.springexample.SpringCore.POJOs.calculator.UnitCalculatorImpl"/>
+
+</beans>
